@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrhman Ahmed - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-text: #2c3e50;
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            padding-top: 70px;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .section-title {
+            position: relative;
+            color: var(--primary-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .section-title:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 80%;
+            width: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .card {
+            border: none;
+            transition: transform var(--transition-speed) ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-badge {
+            background-color: var(--secondary-color) !important;
+            margin: 0.3rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--primary-color) !important;
+            transform: scale(1.05);
+        }
+
+        .experience-card {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--secondary-color);
+        }
+
+        .experience-card:before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            border: 3px solid var(--light-bg);
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .project-card:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--secondary-color);
+            transform: scaleX(0);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .project-card:hover:after {
+            transform: scaleX(1);
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 60%, rgba(255, 255, 255, 0.1) 100%);
+            transform: rotate(30deg);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-icon {
+            transition: all var(--transition-speed) ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: var(--secondary-color) !important;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Abdelrhman Ahmed</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#languages">Languages</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <img src="photo2.jpg" alt="Profile" class="rounded-circle mb-3" width="150">
+            <h1>Abdelrhman Ahmed</h1>
+            <p class="lead">Computer Science Student & Full-Stack Developer</p>
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://linkedin.com/in/abdelrhman-ahmed-a19216296" class="text-white"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="https://github.com/VALKANOO" class="text-white"><i class="fab fa-github fa-2x"></i></a>
+                <a href="mailto:abdelrhmangaballah001@gmail.com" class="text-white"><i class="fas fa-envelope fa-2x"></i></a>
+            </div>
+            <p class="mb-0"> Alexandria, Egypt | 📞 +20 1273675296</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="lead">Dedicated and versatile student at the College of Computers and Data Science, Alexandria University. Proficient in web
+                development, data science, and software engineering with strong theoretical knowledge and practical application.
+                Skilled in data science, full-stack development, machine learning techniques, data analysis techniques and software
+                design. Experienced in internships and training, showcasing a commitment to excellence and learning</p>
+            
+            <h2 class="section-title mt-5">Education</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5>Bachelor of Computers and Data Science</h5>
+                    <p class="mb-1">Alexandria University</p>
+                    <p class="text-muted">Current GPA: 3.7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="row g-4">
+            <!-- Programming Languages -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Programming Languages</h5>
+                        <span class="badge skill-badge">Python</span>
+                        <span class="badge skill-badge">JavaScript</span>
+                        <span class="badge skill-badge">SQL</span>
+                        <span class="badge skill-badge">R</span>
+                        <span class="badge skill-badge">Java</span>
+                        <span class="badge skill-badge">C++</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Science -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Data Science</h5>
+                        <span class="badge skill-badge">Data Collection</span>
+                        <span class="badge skill-badge">Data Processing</span>
+                        <span class="badge skill-badge">Data Mining</span>
+                        <span class="badge skill-badge">Data Analysis</span>
+                        <span class="badge skill-badge">Data Visualization</span>
+                        <span class="badge skill-badge">Data Exploration</span>
+                        <span class="badge skill-badge">Data Cleaning</span>
+                        <span class="badge skill-badge">Machine Learning</span>
+                        <span class="badge skill-badge">Regression</span>
+                        <span class="badge skill-badge">Classification</span>
+                        <span class="badge skill-badge">Clustering</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mathematics & Statistics -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Mathematics & Statistics</h5>
+                        <span class="badge skill-badge">Calculus</span>
+                        <span class="badge skill-badge">Linear Algebra</span>
+                        <span class="badge skill-badge">Numerical Computations</span>
+                        <span class="badge skill-badge">Probability</span>
+                        <span class="badge skill-badge">Statistics</span>
+                        <span class="badge skill-badge">Regression</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Web Development</h5>
+                        <span class="badge skill-badge">Full-Stack Development</span>
+                        <span class="badge skill-badge">Django</span>
+                        <span class="badge skill-badge">Flask</span>
+                        <span class="badge skill-badge">HTML5</span>
+                        <span class="badge skill-badge">CSS</span>
+                        <span class="badge skill-badge">Bootstrap</span>
+                        <span class="badge skill-badge">JavaScript</span>
+                        <span class="badge skill-badge">ReactJS</span>
+                        <span class="badge skill-badge">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database Management -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Database Management</h5>
+                        <span class="badge skill-badge">Database Design</span>
+                        <span class="badge skill-badge">Database Creation</span>
+                        <span class="badge skill-badge">MySQL</span>
+                        <span class="badge skill-badge">SQLite</span>
+                        <span class="badge skill-badge">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Engineering -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Software Engineering</h5>
+                        <span class="badge skill-badge">OOP</span>
+                        <span class="badge skill-badge">GUI Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Science Tools -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Data Science Tools</h5>
+                        <span class="badge skill-badge">Docker</span>
+                        <span class="badge skill-badge">Jupyter Notebook</span>
+                        <span class="badge skill-badge">Excel</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CS Fundamentals -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5>Computer Science Fundamentals</h5>
+                        <span class="badge skill-badge">Data Structures</span>
+                        <span class="badge skill-badge">Algorithms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="py-5">
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+        
+        <!-- Full-Stack Web Development Intern -->
+        <div class="experience-card">
+            <div class="card-body">
+                <h5>Full-Stack Web Development Intern</h5>
+                <h6 class="text-muted">ITSquare | Jan 2024 - Feb 2024</h6>
+                <ul>
+                    <li>Participated in the development and maintenance of web applications</li>
+                    <li>Gained hands-on experience in full-stack technologies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Front-End Development Training -->
+        <div class="experience-card">
+            <div class="card-body">
+                <h5>Front-End Development Training</h5>
+                <h6 class="text-muted">Faculty of Computers and Data Science | Jul 2024 - Aug 2024</h6>
+                <ul>
+                    <li>Trained in modern front-end development technologies</li>
+                    <li>Mastered HTML, CSS, Bootstrap, JavaScript and ReactJS</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DEPI IBM Data Science -->
+        <div class="experience-card">
+            <div class="card-body">
+                <h5>Digital Egypt Pioneers Initiative (DEPI) IBM Data Science</h5>
+                <h6 class="text-muted">Skills Dynamics (NHA) | Oct 2024 - May 2024</h6>
+                <ul>
+                    <li>Advanced data science training program</li>
+                    <li>Part of the Digital Egypt Pioneers Initiative</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+
+        <!-- Data Science Projects -->
+        <div class="project-category mb-5">
+            <h3 class="category-title">Data Science Projects</h3>
+            <div class="row g-4">
+                <!-- Word Frequency Analysis -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Word Frequency Analysis</h5>
+                            <p>Analyzed text datasets using Python (NLTK) and Docker to extract and visualize word frequency statistics</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">NLTK</span>
+                                <span class="badge bg-primary">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Market Analysis -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Business Market Analysis</h5>
+                            <p>Conducted market analysis using Python and RMF techniques to segment customers</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">RMF</span>
+                                <span class="badge bg-primary">Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMDb Movies Analysis -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>IMDb Movies Analysis</h5>
+                            <p>Analyzed IMDb's top 2000 movies dataset to extract trends and insights</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">Data Analysis</span>
+                                <span class="badge bg-primary">Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sleep Health Analysis -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Sleep Health Analysis</h5>
+                            <p>Used R to perform data analysis on sleep health and lifestyle dataset</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">R</span>
+                                <span class="badge bg-primary">Statistics</span>
+                                <span class="badge bg-primary">ggplot2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insurance Dataset Analysis -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Insurance Dataset Analysis</h5>
+                            <p>Conducted data exploration and machine learning tasks on insurance dataset</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">Scikit-learn</span>
+                                <span class="badge bg-primary">EDA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Recommendation System -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Movie Recommendation System</h5>
+                            <p>Implemented machine learning algorithms for movie recommendations and predictions</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Python</span>
+                                <span class="badge bg-primary">Machine Learning</span>
+                                <span class="badge bg-primary">Collaborative Filtering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web Development Projects -->
+        <div class="project-category mb-5">
+            <h3 class="category-title">Web Development Projects</h3>
+            <div class="row g-4">
+                <!-- Library Management System -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Library Management System</h5>
+                            <p>Designed comprehensive library database system with interactive website</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">MySQL</span>
+                                <span class="badge bg-primary">HTML</span>
+                                <span class="badge bg-primary">CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather App -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Weather App</h5>
+                            <p>Dynamic weather application using OpenWeather API</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">JavaScript</span>
+                                <span class="badge bg-primary">API</span>
+                                <span class="badge bg-primary">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Website -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Portfolio Website</h5>
+                            <p>Responsive portfolio using HTML, CSS, and Bootstrap</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">HTML5</span>
+                                <span class="badge bg-primary">CSS3</span>
+                                <span class="badge bg-primary">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Azan Site -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Azan Time App</h5>
+                            <p>Prayer time application using Azan time API</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">JavaScript</span>
+                                <span class="badge bg-primary">API</span>
+                                <span class="badge bg-primary">Postman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media App -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Social Media App</h5>
+                            <p>Full-stack social media application with Tarmeez academy API</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">JavaScript</span>
+                                <span class="badge bg-primary">React</span>
+                                <span class="badge bg-primary">API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Inventory System -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>Food Inventory System</h5>
+                            <p>Inventory management prototype for Egyptian Central Security Forces</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Django</span>
+                                <span class="badge bg-primary">SQLite</span>
+                                <span class="badge bg-primary">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Software Development Projects -->
+        <div class="project-category">
+            <h3 class="category-title">Software Development Projects</h3>
+            <div class="row g-4">
+                <!-- ATM Banking System -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>ATM Banking System</h5>
+                            <p>GUI-based banking system using Java OOP principles</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Java</span>
+                                <span class="badge bg-primary">OOP</span>
+                                <span class="badge bg-primary">GUI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- College Management System -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card project-card h-100">
+                        <div class="card-body">
+                            <h5>College Management System</h5>
+                            <p>Student data management system using Java and linked lists</p>
+                            <div class="tech-stack">
+                                <span class="badge bg-primary">Java</span>
+                                <span class="badge bg-primary">Data Structures</span>
+                                <span class="badge bg-primary">OOP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Languages</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>Arabic</h5>
+                            <p class="text-muted">Native Proficiency</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5>English</h5>
+                            <p class="text-muted">Fluent</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Abdelrhman Ahmed. All rights reserved</p>
+            <p class="mb-0">📍 Alexandria, Egypt</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll functionality
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
